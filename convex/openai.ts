@@ -24,6 +24,10 @@ export const chat = action(async (ctx, { body }) => {
   const openaiResponse = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
+      ...messages.map((message) => ({
+        role: message.author,
+        content: message.body,
+      })),
       {
         role: "system",
         content: "You are a helpful assistant.",
