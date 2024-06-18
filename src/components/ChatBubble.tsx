@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { memo } from "react";
 import Markdown from "react-markdown";
 
 export interface ChatBubbleProps {
@@ -7,15 +8,20 @@ export interface ChatBubbleProps {
   isUser: boolean;
 }
 
-export default function ChatBubble(props: ChatBubbleProps) {
+function ChatBubble(props: ChatBubbleProps) {
+  console.log("render chatbubble", props);
+
   return (
     <div
       key={props.id}
-      className={clsx("bg-zinc-900 p-4 rounded-xl text-left ", {
+      className={clsx("p-4 rounded-xl text-left ", {
         "self-end bg-cyan-600": props.isUser,
+        "self-start bg-zinc-900": !props.isUser,
       })}
     >
       <Markdown>{props.message}</Markdown>
     </div>
   );
 }
+
+export default memo(ChatBubble);
