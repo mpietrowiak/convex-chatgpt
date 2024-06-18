@@ -38,10 +38,7 @@ export const chat = action(async (ctx, { body }) => {
       },
     ],
   });
-  console.log("OpenAI response: " + JSON.stringify(openaiResponse, null, 2));
   const response = openaiResponse.choices[0].message.content;
-  console.log("Response: " + response);
-
   await ctx.runMutation(api.messages.update, {
     messageId: botMessageId,
     patch: {

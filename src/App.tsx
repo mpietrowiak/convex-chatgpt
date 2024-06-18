@@ -67,9 +67,8 @@ function App() {
           className="flex border-t-2  p-3 gap-3 shadow-lg border-t-1 border-zinc-600"
           onSubmit={async (e) => {
             e.preventDefault();
-            // if (!text) return;
             setText("");
-            console.log(await sendMessage({ body: text }));
+            await sendMessage({ body: text });
           }}
         >
           <input

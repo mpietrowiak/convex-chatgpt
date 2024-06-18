@@ -9,8 +9,6 @@ export interface ChatBubbleProps {
 }
 
 function ChatBubble(props: ChatBubbleProps) {
-  console.log("render chatbubble", props);
-
   return (
     <div
       key={props.id}
